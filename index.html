@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-</head>
-<body>
-
-<button onclick="copyText()">📋 서류안내 복사</button>
+<button onclick="copyText()">📋 복사</button>
 
 <script>
 function copyText() {
-  const text = `개인+법인사업자
+  const textarea = document.createElement("textarea");
+  textarea.value = `개인+법인사업자
 심사서류안내 드립니다.
 1. 사업자등록증명원
 1-1. 법인사업자등록증명원
@@ -31,10 +25,9 @@ function copyText() {
 6. 연금지급내역서
 7. 임대차계약서(추가 물건지 월세소득 확인용)
 8. 주식보유현황, 코인 전자지갑보유현황(잔고증명서) 추가소득 일부 보완가능`;
-
-  navigator.clipboard.writeText(text);
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
 }
 </script>
-
-</body>
-</html>
